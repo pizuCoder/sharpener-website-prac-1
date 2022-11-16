@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet" href="index.css">
+	        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+        </head>
+        <body>
+            <div class="right-btns">
+                <button id="open-modal"> Book A Call </button>
+                <button id="hire-btn"> Hire with Us </button>
+            </div>
+            <div class="welcome-text">
+                <h2>Welcome to Sharpener's:</h2>
+                <h1> Book A Call</h1>
+            </div>
+            
+            <div class="modal" id="modal">
+                <button class="modal-close-btn" id="modal-close-btn">X</button>
+                <form id="consent-form">
+                    <label for="fullName">Name:</label>
+                    <input type="text" name="fullName" id="fullName" placeholder="Enter your full name" required/>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email" required/>
+                    <label for="fullName">Mobile Number:</label>
+                    <input type="tel" name="phone" id="phno" placeholder="Enter your Mobile Number" required/>
+                    <label for="date">Time for call: </label>
+                    <div id="time-date">
+                        <input type="date" name="date" id="date" required/>
+                        <input type="time" name="time" id="time" required/>
+                    </div>
+                    
+                    <button type="submit" class="modal-btn" id="modal-btn">Book a Call with Us</button>
+                </form>
+            </div>
+            <script src="index.js"></script>
+        </body>
+    </html>

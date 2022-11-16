@@ -1,0 +1,114 @@
+body{
+    background-image: url('633151.jpeg');
+    background-size: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto';
+    color:whitesmoke;
+}
+.right-btns{
+    text-align: right;
+    margin: 20px;
+    padding: 5px;
+    /* width: 120px;
+    height: 20px; */
+    
+}
+.modal {
+    display: none;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 70%;
+    width: 40%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px 2px #666;
+    background-color: #212529;
+    color: whitesmoke;
+    /* padding: 40px; */
+}
+.modal-close-btn {
+    font-size: 22px;
+    font-weight: bold;
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: whitesmoke;
+    float: right;
+    margin: 10px;
+  }
+  
+  .modal-close-btn:hover,
+  .modal-close-btn:active{
+      color: red;
+      cursor: pointer;
+  }
+  input{
+     
+    border: 1px solid #212529;
+    padding: 10px;
+    width: 80%;
+    border-radius: 3px;
+}
+input, label{
+    margin-top: 10px;
+    display: block;
+}
+form{
+    margin-top:40px;
+    margin-left: 60px;
+    margin-bottom:20px;
+    /* align-content: center; */
+}
+#time-date{
+    display: inline;
+    /* text-align: right; */
+}
+.modal-btn{
+    margin-top: 10px;
+    /* text-align: center; */
+    display: block;
+    width: 85%;
+    padding: 10px;
+    border: 1px solid #212529;
+    border-radius: 3px;
+    background:#666;
+    color: antiquewhite;
+}
+.modal-btn:hover{
+    background:whitesmoke;
+    color: #212529;
+    cursor: pointer;
+}
+
+#open-modal, #hire-btn{
+    border: 1px solid #212529;
+    border-radius: 3px;
+    background:#666;
+    color: antiquewhite;
+    padding: 10px;
+    width: 10%;
+}
+#open-modal:hover, #hire-btn:hover {
+    background:whitesmoke;
+    color: #212529;
+    cursor: pointer;
+}
+.welcome-text{
+    /* margin-top:100px; */
+    text-align: center;
+    /* align-content: center; */
+}
+.welcome-text h1{
+    font-size: 80px;
+    /* text-decoration: dashed; */
+}
+.welcome-text h2{
+    font-size: 40px;
+    
+}
+button:active{
+    border: 2px solid blanchedalmond;
+}
