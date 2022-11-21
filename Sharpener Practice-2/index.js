@@ -8,3 +8,8 @@ const header = document.getElementById('main-header')
 header.style.borderBottom = 'solid 3px #000'
 document.getElementById('main').children[0].style.fontWeight='bold'
 document.getElementById('main').children[0].style.color = 'green'
+const items = document.getElementsByClassName('list-group-item');
+items[2].style.background = 'green'
+for(let i=0; i<items.length; i++){
+    items[i].style.fontWeight = 'bold'
+}
