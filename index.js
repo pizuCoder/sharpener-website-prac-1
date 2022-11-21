@@ -13,3 +13,8 @@ items[2].style.background = 'green'
 for(let i=0; i<items.length; i++){
     items[i].style.fontWeight = 'bold'
 }
+const otherLi = document.getElementsByClassName('other-list-item')
+otherLi[0].style.fontWeight = 'bold'
+
+const Li = document.getElementsByTagName('li')
+Li[4].style.color = 'blue'
