@@ -1,30 +1,20 @@
-const openModal = document.getElementById("open-modal")
-const closeModal = document.getElementById("modal-close-btn")
-const bookCall = document.getElementById("modal-btn")
-const modal = document.getElementById("modal")
-const Name = document.getElementById("fullName")
-const email = document.getElementById("email")
-const phno = document.getElementById("phno")
-const time = document.getElementById("time")
-const date = document.getElementById("date")
-const hireBtn = document.getElementById("hire-btn")
+const headerTitle = document.getElementById('header-title')
+const header = document.getElementById('main-header')
+// console.log(headerTitle);
+// headerTitle.textContent = 'Hello';
+// headerTitle.innerText = 'Goodbye';
+// console.log(headerTitle.innerText);
+// headerTitle.innerHTML = '<h3>Hello</h3>';
+header.style.borderBottom = 'solid 3px #000'
+document.getElementById('main').children[0].style.fontWeight='bold'
+document.getElementById('main').children[0].style.color = 'green'
+const items = document.getElementsByClassName('list-group-item');
+items[2].style.background = 'green'
+for(let i=0; i<items.length; i++){
+    items[i].style.fontWeight = 'bold'
+}
+const otherLi = document.getElementsByClassName('other-list-item')
+otherLi[0].style.fontWeight = 'bold'
 
-openModal.addEventListener('click', function(){
-    modal.style.display = 'inline'
-})
-closeModal.addEventListener('click', function(){
-    modal.style.display = 'none'
-})
-bookCall.addEventListener('click', (e)=> {
-    e.preventDefault()
-    
-    console.log("Name: ",Name.value)
-    console.log("Email: ", email.value)
-    console.log("Phone Number",phno.value)
-    console.log("Date for call: ",date.value)
-    console.log("time for call", time.value)
-    
-})
-hireBtn.addEventListener('click', function () {
-        window.alert("Hire Button clicked, function under development")
-    })
+const Li = document.getElementsByTagName('li')
+Li[4].style.color = 'blue'

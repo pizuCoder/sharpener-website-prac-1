@@ -1,2 +1,2 @@
-# sharpener-website-prac-1
-A practice webpage made for sharpener
+# DOM Manipulation
+This is the DOM manipulation module in web development section in sharpener
