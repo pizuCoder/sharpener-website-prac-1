@@ -1,44 +1,42 @@
-const headerTitle = document.getElementById('header-title')
-const header = document.getElementById('main-header')
-// console.log(headerTitle);
-// headerTitle.textContent = 'Hello';
-// headerTitle.innerText = 'Goodbye';
-// console.log(headerTitle.innerText);
-// headerTitle.innerHTML = '<h3>Hello</h3>';
+//CREATING NODES MODIFYING DOM//
+//keywords:
+// 1. parentElement
+// 2.lastelementchild
+// 3.lastchild
+// 4. createchild
+// 5. firstelementchild
+// 6. firstchild
+// 7. nextsibling
+// 8. nextelementsibling
+// 9. previoussibling
+// 10. previouselementsibling
+// 11. createelement
+// 12. setAttribute
+// 13. createtesxtnode
+// 14. appendchild
 
-//previous tasks:
+const itemList = document.querySelector('#items');
 
-// header.style.borderBottom = 'solid 3px #000'
-// document.getElementById('main').children[0].style.fontWeight='bold'
-// document.getElementById('main').children[0].style.color = 'green'
-// const items = document.getElementsByClassName('list-group-item');
-// items[2].style.background = 'green'
-// for(let i=0; i<items.length; i++){
-//     items[i].style.fontWeight = 'bold'
-// }
-// const otherLi = document.getElementsByClassName('other-list-item')
-// otherLi[0].style.fontWeight = 'bold'
+itemList.parentElement.style.backgroundColor = '#f4f4f4' 
+// itemList.firstElementChild.style.color = 'yellow'
 
-// const Li = document.getElementsByTagName('li')
-// Li[4].style.color = 'blue'
+itemList.lastElementChild.style.color = 'blue' 
+itemList.lastChild.textContent = "hello" 
 
-//querySelector//
+itemList.previousElementSibling.style.color = 'green'
 
-const item = document.querySelector('.list-group-item')
-// item.style.color='red'
-const secondItem = document.querySelector('.list-group-item:nth-child(2)')
-secondItem.style.background = 'blue ' //blue color added so green font can be seen in next task
-const thirdItem = document.querySelector('.list-group-item:nth-child(3)')
-thirdItem.style.display = 'none'
+const newDiv = document.createElement('div')
+newDiv.className= 'hello';
+newDiv.id = 'hellol';
+newDiv.setAttribute('title', 'Hello Div');
+let newDivText = document.createTextNode ("Hello World")
+newDiv.appendChild(newDivText);
+const container= document.querySelector('header .container')
+const h1 = document.querySelector('header h1');
+// container.insertBefore(newDiv, h1);
 
 
-// QUERYSELECTORALL //
-const items = document.querySelectorAll('.list-group-item')
+const li1 = itemList.firstElementChild
+itemList.insertBefore(newDiv, li1)
 
-items[1].style.color = 'green'
-const odd = document.querySelectorAll('li:nth-child(odd)')
 
-for(let i = 0; i < odd.length; i++) {
-odd[i].style.backgroundColor = 'green'
-
-}
