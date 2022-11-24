@@ -13,13 +13,15 @@ filter.addEventListener('keyup', filterItems);
 function addItem(e){
 e.preventDefault();
 // Get input value
-let newItem = document.getElementById('item').value;
+let newItem = document.getElementById('item').value 
+let description = document.getElementById('description').value
 // Create new li element
 let li= document.createElement('li');
 // Add class
 li.className = 'list-group-item';
 // Add text node with input value
-li.appendChild(document.createTextNode (newItem));
+li.appendChild(document.createTextNode (newItem + " " + description))
+// li.appendChild(document.createTextNode (description))
 
 var editBtn = document.createElement('button');
 // Add classes to edit button
@@ -40,6 +42,7 @@ li.appendChild(deleteBtn);
 
 itemList.appendChild(li);
 document.getElementById('item').value = ''
+document.getElementById('description').value = ''
 
 }
 
