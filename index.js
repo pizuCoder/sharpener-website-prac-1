@@ -28,7 +28,30 @@ li.appendChild(itemstoAppend)
 
 
 //localStorage Addition
-localStorage.setItem("ListItem", itemstoAppend.textContent)
+function addtoLocalStorage(){
+    let existingItems = JSON.parse(localStorage.getItem("allListItems"))
+    if(existingItems == null) existingItems = []
+    
+    let itemsObj = {
+        "items": itemstoAppend.textContent
+    }
+    localStorage.setItem("ListItem", JSON.stringify(itemsObj))
+    existingItems.push(itemsObj)
+    localStorage.setItem("allListItems", JSON.stringify(existingItems))
+    // let itemsObj_seralized = JSON.stringify(itemsObj)
+    
+    // localStorage.setItem("ListItem",itemsObj_seralized)
+    // let itemsObj_deserailzed = JSON.parse(localStorage.getItem("ListItem"))
+    // console.log(itemsObj_deserailzed)
+
+}
+addtoLocalStorage()
+
+
+
+
+
+
 
 var editBtn = document.createElement('button');
 // Add classes to edit button
