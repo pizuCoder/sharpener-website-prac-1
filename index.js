@@ -1,42 +1,71 @@
-//CREATING NODES MODIFYING DOM//
-//keywords:
-// 1. parentElement
-// 2.lastelementchild
-// 3.lastchild
-// 4. createchild
-// 5. firstelementchild
-// 6. firstchild
-// 7. nextsibling
-// 8. nextelementsibling
-// 9. previoussibling
-// 10. previouselementsibling
-// 11. createelement
-// 12. setAttribute
-// 13. createtesxtnode
-// 14. appendchild
+const form = document.getElementById('addForm');
+const itemList = document.getElementById('items');
+var filter = document.getElementById('filter');
+// const submitBtn = document.getElementById('Submit')
+// Form submit event
+form.addEventListener('submit', addItem);
 
-const itemList = document.querySelector('#items');
+//delete item
+itemList.addEventListener('click', removeItem);
+//filter
+filter.addEventListener('keyup', filterItems);
+// Add item
+function addItem(e){
+e.preventDefault();
+// Get input value
+let newItem = document.getElementById('item').value;
+// Create new li element
+let li= document.createElement('li');
+// Add class
+li.className = 'list-group-item';
+// Add text node with input value
+li.appendChild(document.createTextNode (newItem));
 
-itemList.parentElement.style.backgroundColor = '#f4f4f4' 
-// itemList.firstElementChild.style.color = 'yellow'
+var editBtn = document.createElement('button');
+// Add classes to edit button
+editBtn.className = 'btn btn-secondary btn-sm float-right edit';
+// Append text node
+editBtn.appendChild(document.createTextNode('edit'));
+// Append button to li
+li.appendChild(editBtn);
 
-itemList.lastElementChild.style.color = 'blue' 
-itemList.lastChild.textContent = "hello" 
+// Create del button element
+var deleteBtn = document.createElement('button');
+// Add classes to del button
+deleteBtn.className = 'btn btn-danger btn-sm float-right mr-3 delete';
+// Append text node
+deleteBtn.appendChild(document.createTextNode('X'));
+// Append button to li
+li.appendChild(deleteBtn);
 
-itemList.previousElementSibling.style.color = 'green'
+itemList.appendChild(li);
+document.getElementById('item').value = ''
 
-const newDiv = document.createElement('div')
-newDiv.className= 'hello';
-newDiv.id = 'hellol';
-newDiv.setAttribute('title', 'Hello Div');
-let newDivText = document.createTextNode ("Hello World")
-newDiv.appendChild(newDivText);
-const container= document.querySelector('header .container')
-const h1 = document.querySelector('header h1');
-// container.insertBefore(newDiv, h1);
+}
 
+// Remove item
+function removeItem(e){
+    if(e.target.classList.contains('delete')) {
+        if (confirm('Are You Sure?')){
+            var li = e.target.parentElement;
+            itemList.removeChild(li);
+        }
+    }
+}
 
-const li1 = itemList.firstElementChild
-itemList.insertBefore(newDiv, li1)
-
-
+// Filter Items
+function filterItems(e){
+    // convert text to lowercase
+    var text = e.target.value.toLowerCase();
+    // Get list
+    var items=  itemList.getElementsByTagName('li')
+    // Convert to an array
+    Array.from(items).forEach(function(item) {
+    var itemName = item.firstChild.textContent;
+    if(itemName.toLowerCase().indexOf(text) != -1){
+        item.style.display = 'block';
+        } else {
+        item.style.display = 'none';
+        }
+    })
+    }
