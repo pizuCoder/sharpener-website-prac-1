@@ -9,6 +9,8 @@ form.addEventListener('submit', addItem);
 itemList.addEventListener('click', removeItem);
 //filter
 filter.addEventListener('keyup', filterItems);
+
+
 // Add item
 function addItem(e){
 e.preventDefault();
@@ -20,8 +22,13 @@ let li= document.createElement('li');
 // Add class
 li.className = 'list-group-item';
 // Add text node with input value
-li.appendChild(document.createTextNode (newItem + " " + description))
+let itemstoAppend = document.createTextNode (newItem + " " + description)
+li.appendChild(itemstoAppend)
 // li.appendChild(document.createTextNode (description))
+
+
+//localStorage Addition
+localStorage.setItem("ListItem", itemstoAppend.textContent)
 
 var editBtn = document.createElement('button');
 // Add classes to edit button
