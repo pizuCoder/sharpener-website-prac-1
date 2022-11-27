@@ -4,12 +4,11 @@ var filter = document.getElementById('filter');
 // const submitBtn = document.getElementById('Submit')
 // Form submit event
 form.addEventListener('submit', addItem);
-
+// window.localStorage.clear()
 //delete item
 itemList.addEventListener('click', removeItem);
 //filter
 filter.addEventListener('keyup', filterItems);
-
 
 // Add item
 function addItem(e){
@@ -23,33 +22,59 @@ let li= document.createElement('li');
 li.className = 'list-group-item';
 // Add text node with input value
 let itemstoAppend = document.createTextNode (newItem + " " + description)
-li.appendChild(itemstoAppend)
+
+
 // li.appendChild(document.createTextNode (description))
 
+for (var i in localStorage) {
+    if (localStorage[i] === `"${description}"`){
+        if(confirm("Email already exists")) return
+        else return
+    }
+    
+        
+}   
+li.appendChild(itemstoAppend)
+        var editBtn = document.createElement('button');
+    // Add classes to edit button
+    editBtn.className = 'btn btn-secondary btn-sm float-right edit';
+    // Append text node
+    editBtn.appendChild(document.createTextNode('edit'));
+    // Append button to li
+    li.appendChild(editBtn);
 
+    editBtn.addEventListener('click', editItems)
+    
+    // Create del button element
+    var deleteBtn = document.createElement('button');
+    // Add classes to del button
+    deleteBtn.className = 'btn btn-danger btn-sm float-right mr-3 delete';
+    // Append text node
+    deleteBtn.appendChild(document.createTextNode('X'));
+    // Append button to li
+    li.appendChild(deleteBtn);
+    
+
+
+itemList.appendChild(li);
+    
+
+    
+    
+ 
 //localStorage Addition
-function addtoLocalStorage(){
-    let existingItems = JSON.parse(localStorage.getItem("allListItems"))
-    if(existingItems == null) existingItems = []
+
+    // let existingUsers = JSON.parse(localStorage.getItem("allUsers"))
+    // if(existingUsers == null) existingUsers = []
     let userName = document.createTextNode(newItem)
     let userEmail = document.createTextNode (description)
-    let itemsObj = {
+    let users = {
         "Name": userName.textContent,
         "Email": userEmail.textContent
     }
-    localStorage.setItem("ListItem", JSON.stringify(itemsObj))
-    existingItems.push(itemsObj)
-    localStorage.setItem("allListItems", JSON.stringify(existingItems))
-    // let itemsObj_seralized = JSON.stringify(itemsObj)
-    
-    // localStorage.setItem("ListItem",itemsObj_seralized)
-    // let itemsObj_deserailzed = JSON.parse(localStorage.getItem("ListItem"))
-    // console.log(itemsObj_deserailzed)
+    localStorage.setItem(JSON.stringify(users.Name),JSON.stringify(users.Email) )
 
-}
-addtoLocalStorage()
 
-itemList.appendChild(li);
 document.getElementById('item').value = ''
 document.getElementById('description').value = ''
 
@@ -61,6 +86,9 @@ function removeItem(e){
         if (confirm('Are You Sure?')){
             var li = e.target.parentElement;
             itemList.removeChild(li);
+            let key = li.textContent.split(" ")[0]
+            console.log(key)
+            localStorage.removeItem(`"${key}"`)
         }
     }
 }
@@ -81,3 +109,16 @@ function filterItems(e){
         }
     })
     }
+
+function editItems(e){
+    if(e.target.classList.contains('edit')){
+        var li = e.target.parentElement;
+        itemList.removeChild(li);
+        let n = li.textContent.split(" ")[0]
+        let eml = li.textContent.split(" ")[1].split("editX")[0]
+        document.getElementById('item').value = n
+        document.getElementById('description').value = eml
+
+    }
+
+}
