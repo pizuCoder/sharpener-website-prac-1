@@ -26,14 +26,12 @@ let itemstoAppend = document.createTextNode (newItem + " " + description)
 
 // li.appendChild(document.createTextNode (description))
 
-for (var i in localStorage) {
-    if (localStorage[i] === `"${description}"`){
-        if(confirm("Email already exists")) return
-        else return
-    }
-    
-        
-}   
+// for (var i in localStorage) {
+//     if (localStorage[i] === `"${description}"`){
+//         if(confirm("Email already exists")) return
+//         else return
+//     }       
+// }   
 li.appendChild(itemstoAppend)
         var editBtn = document.createElement('button');
     // Add classes to edit button
@@ -62,17 +60,21 @@ itemList.appendChild(li);
     
     
  
-//localStorage Addition
+//AXIOS Addition
 
     // let existingUsers = JSON.parse(localStorage.getItem("allUsers"))
     // if(existingUsers == null) existingUsers = []
     let userName = document.createTextNode(newItem)
-    let userEmail = document.createTextNode (description)
+    let userEmail = document.createTextNode(description)
     let users = {
         "Name": userName.textContent,
         "Email": userEmail.textContent
     }
-    localStorage.setItem(JSON.stringify(users.Name),JSON.stringify(users.Email) )
+    // localStorage.setItem(JSON.stringify(users.Name),JSON.stringify(users.Email) )
+    axios
+    .post("https://crudcrud.com/api/20119c27d6b3470f89e1dca4dd5d3246/bookTicketsData", users)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
 
 
 document.getElementById('item').value = ''
