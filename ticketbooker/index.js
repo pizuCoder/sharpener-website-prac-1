@@ -33,7 +33,8 @@ let itemstoAppend = document.createTextNode (newItem + " " + description)
 //     }       
 // }   
 li.appendChild(itemstoAppend)
-        var editBtn = document.createElement('button');
+
+    var editBtn = document.createElement('button');
     // Add classes to edit button
     editBtn.className = 'btn btn-secondary btn-sm float-right edit';
     // Append text node
@@ -42,7 +43,9 @@ li.appendChild(itemstoAppend)
     li.appendChild(editBtn);
 
     editBtn.addEventListener('click', editItems)
+
     
+   
     // Create del button element
     var deleteBtn = document.createElement('button');
     // Add classes to del button
@@ -72,7 +75,7 @@ itemList.appendChild(li);
     }
     // localStorage.setItem(JSON.stringify(users.Name),JSON.stringify(users.Email) )
     axios
-    .post("https://crudcrud.com/api/20119c27d6b3470f89e1dca4dd5d3246/bookTicketsData", users)
+    .post("https://crudcrud.com/api/b26f17664fd14983baa26fd5d47eb4f8/BookingData", users)
     .then((res) => console.log(res))
     .catch((err) => console.log(err))
 
@@ -82,6 +85,57 @@ document.getElementById('description').value = ''
 
 }
 
+//To show previous user interaction//
+window.addEventListener('DOMContentLoaded', ()=>{
+    axios
+    .get('https://crudcrud.com/api/b26f17664fd14983baa26fd5d47eb4f8/BookingData')
+    .then((res)=>{
+        console.log(res)
+        for(var i=0; i<res.data.length;i++){
+            showNewUseronScreen(res.data[i])
+        }
+    })
+    .catch((err)=> console.log(err))
+})
+
+//function to show on screen//
+function showNewUseronScreen(userData){
+    let username = userData.Name
+    let useremail = userData.Email
+    // Create new li element
+    let li= document.createElement('li');
+    // Add class
+    li.className = 'list-group-item';
+    // Add text node with input value
+    let itemstoAppend = document.createTextNode (username + " " + useremail)
+    
+    li.appendChild(itemstoAppend)
+
+        var editBtn = document.createElement('button');
+        // Add classes to edit button
+        editBtn.className = 'btn btn-secondary btn-sm float-right edit';
+        // Append text node
+        editBtn.appendChild(document.createTextNode('edit'));
+        // Append button to li
+        li.appendChild(editBtn);
+
+        editBtn.addEventListener('click', editItems)
+
+        
+    
+        // Create del button element
+        var deleteBtn = document.createElement('button');
+        // Add classes to del button
+        deleteBtn.className = 'btn btn-danger btn-sm float-right mr-3 delete';
+        // Append text node
+        deleteBtn.appendChild(document.createTextNode('X'));
+        // Append button to li
+        li.appendChild(deleteBtn);
+        
+
+
+    itemList.appendChild(li);
+}
 // Remove item
 function removeItem(e){
     if(e.target.classList.contains('delete')) {
@@ -91,6 +145,8 @@ function removeItem(e){
             let key = li.textContent.split(" ")[0]
             console.log(key)
             localStorage.removeItem(`"${key}"`)
+            // axios
+            // .delete('https://crudcrud.com/api/b26f17664fd14983baa26fd5d47eb4f8/BookingData/')
         }
     }
 }
