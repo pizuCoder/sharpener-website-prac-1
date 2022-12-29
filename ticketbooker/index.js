@@ -75,7 +75,7 @@ itemList.appendChild(li);
     }
     // localStorage.setItem(JSON.stringify(users.Name),JSON.stringify(users.Email) )
     axios
-    .post("https://crudcrud.com/api/b26f17664fd14983baa26fd5d47eb4f8/BookingData", users)
+    .post("https://crudcrud.com/api/1858a83c80354c18865ad6a5036d42ac/BookingData", users)
     .then((res) => console.log(res))
     .catch((err) => console.log(err))
 
@@ -88,7 +88,7 @@ document.getElementById('description').value = ''
 //To show previous user interaction//
 window.addEventListener('DOMContentLoaded', ()=>{
     axios
-    .get('https://crudcrud.com/api/b26f17664fd14983baa26fd5d47eb4f8/BookingData')
+    .get('https://crudcrud.com/api/1858a83c80354c18865ad6a5036d42ac/BookingData')
     .then((res)=>{
         console.log(res)
         for(var i=0; i<res.data.length;i++){
@@ -100,12 +100,14 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
 //function to show on screen//
 function showNewUseronScreen(userData){
+    let userID = userData._id
     let username = userData.Name
     let useremail = userData.Email
     // Create new li element
     let li= document.createElement('li');
     // Add class
     li.className = 'list-group-item';
+    li.id = `${userID}`
     // Add text node with input value
     let itemstoAppend = document.createTextNode (username + " " + useremail)
     
@@ -141,15 +143,25 @@ function removeItem(e){
     if(e.target.classList.contains('delete')) {
         if (confirm('Are You Sure?')){
             var li = e.target.parentElement;
-            itemList.removeChild(li);
-            let key = li.textContent.split(" ")[0]
-            console.log(key)
-            localStorage.removeItem(`"${key}"`)
-            // axios
-            // .delete('https://crudcrud.com/api/b26f17664fd14983baa26fd5d47eb4f8/BookingData/')
+            
+            // let key = li.textContent.split(" ")[0]
+            // console.log(key)
+            // localStorage.removeItem(`"${key}"`)
+            // code to delete from database
+            axios
+            .delete(`https://crudcrud.com/api/1858a83c80354c18865ad6a5036d42ac/BookingData/${li.id}`)
+            .then((res)=>{
+                itemList.removeChild(li)
+                for(var i=0; i<res.data.length;i++){
+                    showNewUseronScreen(res.data[i])
+                }
+            })
+            .catch((err)=> console.log(err))
         }
     }
 }
+
+
 
 // Filter Items
 function filterItems(e){
