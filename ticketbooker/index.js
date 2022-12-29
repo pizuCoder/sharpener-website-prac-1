@@ -183,12 +183,26 @@ function filterItems(e){
 function editItems(e){
     if(e.target.classList.contains('edit')){
         var li = e.target.parentElement;
-        itemList.removeChild(li);
+        // itemList.removeChild(li);
+        
+        axios
+        .delete(`https://crudcrud.com/api/1858a83c80354c18865ad6a5036d42ac/BookingData/${li.id}`)
+        .then((res)=>{
+            itemList.removeChild(li)
+            for(var i=0; i<res.data.length;i++){
+                showNewUseronScreen(res.data[i])
+            }
+        })
+        .catch((err)=> console.log(err))
+
         let n = li.textContent.split(" ")[0]
         let eml = li.textContent.split(" ")[1].split("editX")[0]
         document.getElementById('item').value = n
         document.getElementById('description').value = eml
-
     }
+    // if(document.getElementsByClassName('submit').clicked==true){
+    //     var li = e.target.parentElement;
+        
+    // }
 
 }
