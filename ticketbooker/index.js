@@ -75,7 +75,7 @@ itemList.appendChild(li);
     }
     // localStorage.setItem(JSON.stringify(users.Name),JSON.stringify(users.Email) )
     axios
-    .post("https://crudcrud.com/api/1858a83c80354c18865ad6a5036d42ac/BookingData", users)
+    .post("https://crudcrud.com/api/d3a69b46b4c54fa6b80a37f4507f425c/BookingData", users)
     .then((res) => console.log(res))
     .catch((err) => console.log(err))
 
@@ -88,7 +88,7 @@ document.getElementById('description').value = ''
 //To show previous user interaction//
 window.addEventListener('DOMContentLoaded', ()=>{
     axios
-    .get('https://crudcrud.com/api/1858a83c80354c18865ad6a5036d42ac/BookingData')
+    .get('https://crudcrud.com/api/d3a69b46b4c54fa6b80a37f4507f425c/BookingData')
     .then((res)=>{
         console.log(res)
         for(var i=0; i<res.data.length;i++){
@@ -149,7 +149,7 @@ function removeItem(e){
             // localStorage.removeItem(`"${key}"`)
             // code to delete from database
             axios
-            .delete(`https://crudcrud.com/api/1858a83c80354c18865ad6a5036d42ac/BookingData/${li.id}`)
+            .delete(`https://crudcrud.com/api/d3a69b46b4c54fa6b80a37f4507f425c/BookingData/${li.id}`)
             .then((res)=>{
                 itemList.removeChild(li)
                 for(var i=0; i<res.data.length;i++){
@@ -186,7 +186,7 @@ function editItems(e){
         // itemList.removeChild(li);
         
         axios
-        .delete(`https://crudcrud.com/api/1858a83c80354c18865ad6a5036d42ac/BookingData/${li.id}`)
+        .delete(`https://crudcrud.com/api/d3a69b46b4c54fa6b80a37f4507f425c/BookingData/${li.id}`)
         .then((res)=>{
             itemList.removeChild(li)
             for(var i=0; i<res.data.length;i++){
